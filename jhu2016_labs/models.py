@@ -85,7 +85,7 @@ class GMM(object):
             self.gaussians[k].mean = mean
             self.gaussians[k].var = \
                     np.sum((resps[:, k] * ((X - mean) ** 2))) / resps[:, k].sum()
-            self.gaussians[k].weights = np.sum(resps[:, k]) / X.shape[0]
+            self.weights[k] = np.sum(resps[:, k]) / X.shape[0]
 
     def EM(self, X, threshold=1e-2):
         previous_llh = float('-inf')
